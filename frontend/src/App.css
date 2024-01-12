@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  background-image: url("https://i.pinimg.com/originals/4d/b7/c2/4db7c2c5722c6478330eb133ec089c87.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
