@@ -114,7 +114,7 @@ const GroupChatModal = ({ children }) => {
       toast({
         title: error?.data?.message || "Something went wrong!",
         // description: "",
-        status: "danger",
+        status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom",
