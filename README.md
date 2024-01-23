@@ -9,22 +9,15 @@ Developed as a personal project, created using [React](https://react.dev/) and [
 
 ## Screenshot
 
-<p justifyContent="space-between" >
-  <img src="screenshots/home.png" width="200" /> 
-  <img src="screenshots/homeDark.png" width="200" /> 
-</p>
-
-<p justifyContent="space-between" >
-  <img src="screenshots/home.png" width="200" /> 
-  <img src="screenshots/chatBox.png" width="200" /> 
-</p>
-  
 <!-- <p justifyContent="space-between" >
-  <img src="screenshots/detail.png" width="200" /> 
-  <img src="screenshots/detailDark.png" width="200" /> 
+  <img src="screenshots/detail.png" width="200" />
+  <img src="screenshots/detailDark.png" width="200" />
 </p> -->
 
+<img src="screenshots/home.png" width="200" />
+<img src="screenshots/chatBox.png" width="200" />
 <img src="screenshots/sidebar.png" width="200" />
+
 ## Features
 
 - Login/Singup user
@@ -47,11 +40,13 @@ $ cd chatApp
 
 Run frontend or backend
 
-`(frontend)`
+``````
+frontend
 $ npm start
 
-````
+`````
 
-``` (backedn) ```
+backend
 $ npm run dev
 ````
+``````
