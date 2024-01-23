@@ -103,9 +103,10 @@ exports.signup = async (req, res, next) => {
 exports.getAllUsers = async (req, res, next) => {
   // Added AND operator instead of OR
   // because I don't want any result if search doesn't matches
+
   const keywords = req.query.search
     ? {
-        $and: [
+        $or: [
           { name: { $regex: req.query.search, $options: "i" } },
           { email: { $regex: req.query.search, $options: "i" } },
         ],

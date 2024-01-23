@@ -1,3 +1,5 @@
 # chatApp
 
-A web application for chatting made with Node and react.
+A web application called "Talky" made for chatting.
+
+Built with Node and react.

@@ -144,14 +144,14 @@ const Login = () => {
         Login
       </Button>
 
-      <Button
+      {/* <Button
         colorScheme="red"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitGuestHandler}
       >
         Guest user credentials
-      </Button>
+      </Button> */}
     </VStack>
   );
 };

@@ -179,7 +179,15 @@ const Signup = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log("Login.js submitHandle() Error=", err);
+        // console.log("Signup.js submitHandle() Error=",err);
+        toast({
+          title: err?.data?.message || "Something went wrong!",
+          // description: "",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
         setIsLoading(false);
       });
   };
@@ -255,7 +263,7 @@ const Signup = () => {
           <FormErrorMessage>{cPasswordErrorMsg}</FormErrorMessage>
         )}
       </FormControl>
-      <FormControl id="signup-pic" isRequired>
+      <FormControl id="signup-pic">
         <FormLabel>Upload your picture</FormLabel>
         <Input
           type="file"

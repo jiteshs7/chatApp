@@ -3,16 +3,16 @@ const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const dotenv = require("dotenv");
 
 const chatRoutes = require("./routes/ChatRoutes");
 const userRoutes = require("./routes/UserRoutes");
 const messageRoutes = require("./routes/MessageRoutes");
-const APP_CONSTANTS = require("./shared/Constants");
 
 const { notFound, errorHandler } = require("./middleware/ErrorHandler");
 
 const app = express();
-
+dotenv.config();
 // Define the maximum size for uploading
 // picture i.e. 1 MB. it is optional
 const maxSize = 1 * 1000 * 1000;
@@ -82,9 +82,29 @@ app.post("/upload-image", (req, res, next) => {
     .json({ message: "File stored!", filePath: req.file.path });
 });
 
+//-----------------DEPLOYEMENT----------------
+const __dirname1 = path.resolve();
+
 app.use("/chats", chatRoutes);
 app.use("/user", userRoutes);
 app.use("/message", messageRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "../frontend/build")));
+
+  app.get("*", (req, res, next) => {
+    try {
+      res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
+    } catch (error) {
+      console.log("ERROR", error);
+      next(error);
+    }
+  });
+} else {
+  app.use("/", (req, res) => {
+    res.send(`API is running on...${process.env.NODE_ENV}`);
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
@@ -95,11 +115,12 @@ const server = app.listen(
 );
 
 mongoose
-  .connect(APP_CONSTANTS.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(process.env.MONGODB_URI, {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(() => {
+    console.log("DB connected!!");
     const io = require("socket.io")(server, {
       pingTimeout: 60000, // It will take 60s to close the connection and to save the bandwidth
       cors: {
